@@ -1,7 +1,7 @@
 {
   "name": "Trabzon Afet Saha Tespit",
   "short_name": "Trabzon Saha",
-  "description": "Trabzon ili altyapı hasar tespiti; GPS, fotoğraf, proje yedeği ve 4123 Excel raporlama.",
+  "description": "Trabzon ili altyapı hasar tespiti; GPS, fotoğraf, hızlı giriş, proje yedeği ve güncel 4123 Excel raporlama.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
