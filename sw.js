@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trabzon-afet-saha-tespit-v1.2';
+const CACHE_NAME = 'trabzon-afet-saha-tespit-v1.2.1';
 const APP_SHELL = [
   './',
   './index.html',
