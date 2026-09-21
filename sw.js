@@ -1,5 +1,50 @@
-const CACHE_NAME='trabzon-afet-saha-1.1';
-const APP_SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==self.location.origin)return;e.respondWith(fetch(e.request).then(r=>{if(r&&r.ok)caches.open(CACHE_NAME).then(c=>c.put(e.request,r.clone()));return r;}).catch(async()=>await caches.match(e.request,{ignoreSearch:true})||(e.request.mode==='navigate'?caches.match('./index.html'):Promise.reject(new Error('offline')))));});
+const CACHE_NAME = 'trabzon-afet-saha-tespit-v1.2';
+const APP_SHELL = [
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './icon-192.png',
+  './icon-512.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', event => {
+  const req = event.request;
+  if (req.method !== 'GET') return;
+
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Prefer current online version, but fall back to the installed offline copy.
+  event.respondWith(
+    fetch(req)
+      .then(resp => {
+        if (resp && resp.ok) {
+          const copy = resp.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
+        }
+        return resp;
+      })
+      .catch(async () => {
+        const cached = await caches.match(req, {ignoreSearch: true});
+        if (cached) return cached;
+        if (req.mode === 'navigate') return caches.match('./index.html');
+        throw new Error('offline');
+      })
+  );
+});
