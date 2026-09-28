@@ -1,0 +1,22 @@
+TRABZON AFET SAHA TESPIT v1.3.0
+Kaynak Excel: TRABZON_SOURCE_TEMPLATE_200_FINAL.xlsx
+
+Bu surum RIZE_SOURCE_TEMPLATE_200_FINAL.xlsx esas alinarak hazirlanmistir.
+Rize'deki son baski/yazdirma, ICMAL ve Raporlar duzeni korunmustur.
+Yalniz Trabzon'a gerekli il/ilce/mahalle verileri ve il basligi uyarlanmistir.
+
+Excel kapasitesi: 200 tespit.
+- GIRIS: 200 kayit
+- ICMAL: 200 kayit + genel toplam/imza
+- Raporlar: 200 kayda kadar rapor
+- YM/Puan ve rapor metni duzeni son Rize FINAL Excel ile aynidir.
+- Raporlar yazdirma alani: A1:X1133
+- Rize FINAL dosyasindaki sayfa ayarlari / baski ayarlari korunmustur.
+- TRABZON VERI sayfasi: 18 ilce + 716 mahalle.
+- JSON Birlestir eklidir: ayni afet tarihi + ilce + sorumlu idareye ait birden fazla proje yedegini tek projede birlestirir.
+- En fazla 200 benzersiz tespit.
+- Eski Trabzon cihaz kayitlarini korumak icin IndexedDB/localStorage anahtarlari Trabzon v1.2.1 ile ayni tutulmustur.
+- AMB Trabzon surumunde kapali; GPS/fotograf/Excel/maliyet/proje yedekleme aktiftir.
+
+GitHub reposuna bu klasorun ICERIGINI yukleyin.
+GitHub Pages icin index.html, sw.js, manifest.webmanifest ve ikonlar repo kokunde kalmalidir.

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trabzon-afet-saha-tespit-v1.2.1';
+const CACHE_NAME = 'trabzon-afet-saha-tespit-v1.3.0-final-200-json-20260928';
 const APP_SHELL = [
   './',
   './index.html',
@@ -30,7 +30,6 @@ self.addEventListener('fetch', event => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // Prefer current online version, but fall back to the installed offline copy.
   event.respondWith(
     fetch(req)
       .then(resp => {

@@ -1,7 +1,7 @@
 {
   "name": "Trabzon Afet Saha Tespit",
   "short_name": "Trabzon Saha",
-  "description": "Trabzon afet sonrası altyapı hasar tespiti, GPS, fotoğraf ve Excel raporlama uygulaması.",
+  "description": "Trabzon afet sonrası altyapı hasar tespiti, GPS, fotoğraf, JSON birleştirme ve Excel raporlama uygulaması.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
